@@ -37,31 +37,45 @@
             <meta property="article:author" content="{{ AUTHOR }}" />
         {% endif %}
         {% if article.og_image %}
-            <meta property="og:image"
-                  content="{{ SITEURL }}/{{ article.og_image }}"/>
+            <meta property="og:image" content="{{ SITEURL }}/{{ article.og_image }}"/>
         {% elif OPEN_GRAPH_IMAGE %}
-            <meta property="og:image"
-                  content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
+            <meta property="og:image" content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
         {% endif %}
     {% endif %}
 {% endblock %}
 
 {% block canonical_rel %}
-<link rel="canonical" href="{{ SITEURL }}/{{ article.url }}">
+    <link rel="canonical" href="{{ SITEURL }}/{{ article.url }}">
 {% endblock %}
 
 {% block breadcrumbs %}
     {% if DISPLAY_BREADCRUMBS %}
         {% if DISPLAY_CATEGORY_IN_BREADCRUMBS %}
             <ol class="breadcrumb">
-                <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"><i class="fa fa-home fa-lg"></i></a></li>
-                <li><a href="{{ SITEURL }}/{{ article.category.url }}" title="{{ article.category }}">{{ article.category }}</a></li>
-                <li class="active">{{ article.title }}</li>
+                <li>
+                    <a href="{{ SITEURL }}" title="{{ SITENAME }}">
+                        <i class="fa fa-home fa-lg"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ SITEURL }}/{{ article.category.url }}" title="{{ article.category }}">
+                        {{ article.category }}
+                    </a>
+                </li>
+                <li class="active">
+                    {{ article.title }}
+                </li>
             </ol>
         {% else %}
             <ol class="breadcrumb">
-                <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"><i class="fa fa-home fa-lg"></i></a></li>
-                <li class="active">{{ article.title }}</li>
+                <li>
+                    <a href="{{ SITEURL }}" title="{{ SITENAME }}">
+                        <i class="fa fa-home fa-lg"></i>
+                    </a>
+                </li>
+                <li class="active">
+                    {{ article.title }}
+                </li>
             </ol>
         {% endif %}
     {% endif %}
@@ -72,9 +86,7 @@
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="{{ SITEURL }}/{{ article.url }}"
-                       rel="bookmark"
-                       title="Permalink to {{ article.title|striptags }}">
+                    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
                         {{ article.title }}
                     </a>
                 </h1>
@@ -93,5 +105,4 @@
             {% include 'includes/comments.html' %}
         </article>
     </section>
-
 {% endblock %}

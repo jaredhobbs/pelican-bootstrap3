@@ -9,19 +9,15 @@
     <meta name="twitter:domain" content="{{ SITEURL }}">
     {% if article %}
         {% if article.og_image %}
-            <meta property="twitter:image"
-                  content="{{ SITEURL }}/{{ article.og_image }}"/>
+            <meta property="twitter:image" content="{{ SITEURL }}/{{ article.og_image }}"/>
         {% elif OPEN_GRAPH_IMAGE %}
-            <meta property="twitter:image"
-                  content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
+            <meta property="twitter:image" content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
         {% endif %}
     {% elif page %}
         {% if page.og_image %}
-            <meta property="twitter:image"
-                  content="{{ SITEURL }}/{{ page.og_image }}"/>
+            <meta property="twitter:image" content="{{ SITEURL }}/{{ page.og_image }}"/>
         {% elif OPEN_GRAPH_IMAGE %}
-            <meta property="twitter:image"
-                  content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
+            <meta property="twitter:image" content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
         {% endif %}
     {% endif %}
 {% endif %}
