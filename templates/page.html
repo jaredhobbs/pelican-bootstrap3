@@ -48,19 +48,26 @@
 
 {% block content %}
     <section id="content" class="body">
-        <h1 class="entry-title">{{ page.title }}</h1>
-        {% import 'includes/translations.html' as translations with context %}
-        {{ translations.translations_for(page) }}
+        <h3 class="ps1">
+            <span class="user-host">
+                guest@{{ SITENAME|lower }}
+            </span>
+            <span class="path">
+                /{{ page.slug }}
+            </span>
+        </h3>
         {% if PDF_PROCESSOR %}
             <a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">
                 get the pdf
             </a>
         {% endif %}
-        <div class="entry-content">
-            {{ page.content }}
-            {% if page.comments == 'enabled' %}
-                {% include 'includes/comments.html' %}
-            {% endif %}
+        <div class="entry-content panel">
+            <div class="panel-body">
+                {{ page.content }}
+                {% if page.comments == 'enabled' %}
+                    {% include 'includes/comments.html' %}
+                {% endif %}
+            </div>
         </div>
     </section>
 {% endblock %}

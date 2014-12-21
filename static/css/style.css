@@ -5,8 +5,34 @@ body {
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     padding-top: 0;
-    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
     color: white;
+}
+
+.prompt:before {
+  content: "$\00a0\00a0";
+}
+.prompt {
+    color: #f5f5f5;
+}
+.ps1 > .user-host {
+    color: green;
+}
+.ps1 > .path {
+    color: #D7DF01;
+}
+.article-title {
+    font-size: 130%;
+}
+code, table {
+    background-color: inherit;
+}
+.panel-body.terminal {
+    font-family: Courier, Arial, Helvetica, sans-serif;
+}
+.terminal > .prompt:before {
+  content: "$";
 }
 
 #sidebar .list-group, #sidebar .list-group-item {
@@ -87,6 +113,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a, a:hover {
     color: inherit;
+    text-decoration: dotted;
 }
 
 .entry-content a {

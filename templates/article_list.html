@@ -4,36 +4,38 @@
         {% for article in (articles_page.object_list if articles_page else articles) %}
             <article>
                 <div>
-                    <h3 class="summary">
-                        <font color=green>
+                    <h3 class="ps1">
+                        <span class="user-host">
                             {{ article.author }}@{{ SITENAME|lower }}
-                        </font>
-                        <font color=#D7DF01>
+                        </span>
+                        <span class="path">
                             ~/{{ article.url }}
-                        </font>
+                        </span>
                     </h3>
-                    {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
-                        <p class="summary">
-                            $ date
+                    <div class="panel panel-body">
+                        {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
+                            <p class="prompt">
+                                date
+                            </p>
+                            <p>{{ article.locale_date }}</p>
+                        {% endif %}
+                        <p class="prompt">
+                            cat teaser
                             <br />
-                            {{ article.locale_date }}
                         </p>
-                    {% endif %}
-                    <p class="summary">
-                        $ cat teaser
-                        <br />
-                        <font style="font-size:130%;">
+                        <p>
+                        <span class="article-title">
                             {{ article.title|striptags }}
-                        </font>
-                        {{ article.summary|safe }}
-                    </p>
-                    <p>
-                        <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">
-                            more ...
-                        </a>
-                    </p>
+                        </span>
+                            {{ article.summary|safe }}
+                            <a class="btn btn-default btn-xs" href="{{ SITEURL }}/{{ article.url }}">
+                                more ...
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </article>
+            <br>
         {% endfor %}
     {% endif %}
     {% include 'includes/pagination.html' %}

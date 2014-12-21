@@ -15,20 +15,27 @@
 
 {% block content %}
     <section id="content">
-        <h1>Archives for {{ SITENAME }}</h1>
-        <div id="archives">
-            {% for article in dates %}
-                <p>
-                    <span class="categories-timestamp">
-                        <time datetime="{{ article.date.isoformat() }}">
-                            {{ article.locale_date }}
-                        </time>
-                    </span>
-                    <a href="{{ SITEURL }}/{{ article.url }}">
-                        {{ article.title }}{% if article.subtitle %} - {{ article.subtitle }}{% endif %}
-                    </a>
+        <h3 class="ps1">
+            <span class="user-host">
+                guest@{{ SITENAME|lower }}
+            </span>
+            <span class="path">
+                /archives
+            </span>
+        </h3>
+        <div class="panel">
+            <div class="panel-body terminal">
+                <p class="prompt">
+                    ls -ot
                 </p>
-            {% endfor %}
+                {% for article in dates %}
+                    -rw-r--r-- 1 {{ article.author }} {{ article.locale_date }}
+                    <a href="{{ SITEURL }}/{{ article.url }}">
+                        {{ article.title|striptags }}
+                    </a>
+                    <br>
+                {% endfor %}
+            </div>
         </div>
     </section>
 {% endblock %}
