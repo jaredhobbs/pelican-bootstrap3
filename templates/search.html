@@ -4,26 +4,41 @@
     Search - {{ super() }}
 {% endblock %}
 
+{% block content %}
+    <h3 class="ps1">
+        <span class="user-host">
+            guest@{{ SITENAME|lower }}
+        </span>
+        <span class="path">
+            /search
+        </span>
+    </h3>
+    <div class="panel panel-body">
+        <p class="prompt">
+            grep -ir "<span id="js-search-term"></span>" *
+        </p>
+        <div id="tipue_search_content"></div>
+    </div>
+{% endblock %}
+
 {% block scripts %}
     {% if 'assets' in PLUGINS %}
         {% include '_includes/minify_tipuesearch.html' with context %}
     {% else %}
-        <link href="{{ SITEURL }}/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
         <script type="text/javascript" src="{{ SITEURL }}/theme/tipuesearch/tipuesearch_set.js"></script>
         <script type="text/javascript" src="{{ SITEURL }}/theme/tipuesearch/tipuesearch.min.js"></script>
     {% endif %}
     <script>
         $(document).ready(function() {
-            $('#tipue_search_input').tipuesearch({
-                'mode': 'json',
-                'show': 10,
-                'newWindow': false,
-                'contentLocation': 'tipuesearch_content.json'
+            var $input = $('#tipue_search_input');
+            $input.tipuesearch({
+                mode: 'json',
+                show: 10,
+                newWindow: false,
+                contentLocation: 'tipuesearch_content.json',
+                highlightEveryTerm: true
             });
+            $('#js-search-term').text($input.val());
         });
     </script>
-{% endblock %}
-
-{% block content %}
-    <div id="tipue_search_content"></div>
 {% endblock %}

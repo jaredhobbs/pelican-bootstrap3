@@ -27,12 +27,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 code, table {
     background-color: inherit;
+    color: inherit;
 }
 .panel-body.terminal {
     font-family: Courier, Arial, Helvetica, sans-serif;
 }
 .terminal > .prompt:before {
-  content: "$";
+    content: "$";
+}
+#tipue_search_results_count, .tipue_search_content_title, .tipue_search_content_url, .tipue_search_content_text,
+.tipue_search_content_title a {
+    color: inherit;
+    font: inherit;
+    text-decoration: inherit;
+}
+.tipue_search_content_url {
+    display: none;
+}
+.h01 {
+    color: darkred;
 }
 
 #sidebar .list-group, #sidebar .list-group-item {

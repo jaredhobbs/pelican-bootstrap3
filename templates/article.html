@@ -101,7 +101,7 @@
                             <p class="prompt">
                                 cat attachments
                             </p>
-                            {% for att in article.attachments|list %}
+                            {% for att in article.attachments|literal_eval %}
                                 <p id="attachment-{{ loop.index }}" class="attachment ct">
                                     <a href="{{ att['url'] }}" class="attachment-link">{{ att['name'] }}</a>
                                 </p>
